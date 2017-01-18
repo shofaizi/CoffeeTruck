@@ -3,8 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Coffeerun</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css'>
   </head>
-  <body>
+  <body class='container'>
+    <header>
+      <h1>CoffeeRun</h1>
+    </header>
+    <section>
+      <div class='panel panel-default'>
+        <div class='panel-body'>
+          <form data-coffee-order='form'><!--data attribute will be used for accessing DOM  -->
+            <div class='form-group'>
+              <label for='coffeeOrder'>Coffee Order</label><!--for attribute used  -->
+              <input class='form-control' name='coffee' id='coffeeOrder' autofocus><!--  -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
     <script src='scripts/datastore.js' charset='utf-8'></script>
     <script src='scripts/truck.js' charset='utf-8'></script>
     <script src='scripts/main.js' charset='utf-8'></script>
