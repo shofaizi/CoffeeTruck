@@ -13,6 +13,21 @@
     }
   }
 
+  FormHandler.prototype.addSubmitHandler = function() {
+    console.log('Setting submit handler for form');
+    this.$formElement.on('submit', function(e) {
+      e.preventDefault();
+
+      var data = {};
+      $(this).serializeArray().forEach(function(item){
+        //serializeArray gets data from form
+        data[item.name] = item.value;
+        console.log(item.name + " is " + item.value);
+      });
+      console.log(data);
+    });
+  }
+
   App.FormHandler = FormHandler;
   window.App = App;
 
