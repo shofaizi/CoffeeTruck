@@ -1,21 +1,48 @@
 (function(windown) {
   // this module will have three methods:
   // 1. create a checklist item, including the checkbox and the text description
-  // 2. add event listener to remove row
-  // 3. remove the row of checklist item
+  // 2. remove the row of checklist item
+  // 3. add event listener to remove row
   'use strict';
   var App = window.App || {};
   var $ = window.jQuery;
 
-  function Checklist() {
+  function CheckList(selector) {
     if(!selector) {
       throw new Error('No selector provided');
     }
+
     this.$element = $(selector);
     if(this.$element === 0) {
       throw new Error('Could not find element with selector ' + selector);
     }
   }
+
+  CheckList.prototype.addRow = function(coffeeOrder){
+    this.removeRow(coffeeOrder.emailAddress)
+    //remove any existing rows that match the email address
+
+    var rowElement = new Row(coffeeOrder);
+    // create a new instance of a row, using the coffee order info
+
+    this.$element.append(rowElement.$element);
+    // add the new row instance's $element property to the checklist
+  };
+
+  CheckList.prototype.removeRow = function(email) {
+    this.$element
+      .find('[value="' + email + '"]')
+      .closest('[data-coffee-order="checkbox"]')
+      .remove();
+  };
+
+  CheckList.prototype.addClickHandler = function(fn) {
+    this.$element.on('click', 'input', function(e) {
+      var email = e.target.value;
+      this.removeRow(email);
+      fn(email);
+    }.bind(this));
+  };
 
   function Row(coffeeOrder) {
     var $div = $('<div></div>', {
@@ -23,7 +50,9 @@
       'class': 'checkbox'
     });
 
-    var $label = $('<label></label>', {
+    var $label = $('<label></label>');
+
+    var $checkbox = $('<input></input>', {
       type: 'checkbox',
       value: coffeeOrder.emailAddress
     });
@@ -42,8 +71,8 @@
     $div.append($label);
 
     this.$element = $div;
-  }
+  };
 
-  App.Checklist = Checklist;
+  App.CheckList = CheckList;
   window.App = App;
 })(window);
