@@ -15,31 +15,32 @@
           <form data-coffee-order='form'><!--data attribute will be used for accessing DOM  -->
             <div class='form-group'>
               <label for='coffeeOrder'>Coffee Order</label><!--for attribute used for id  -->
-              <input class='form-control' name='coffee' id='coffeeOrder' autofocus><!-- id and for values must match -->
+              <input class='form-control' name='coffee' id='coffeeOrder' autofocus required
+              pattern="[a-zA-Z\s]+" /><!-- id and for values must match -->
             </div>
 
             <div class='form-group'>
               <label for='emailInput'>Email</label>
-              <input class='form-control' type='email' name='emailAddress' id='emailInput' value='' placeholder="John@Smith.com">
+              <input class='form-control' type='email' name='emailAddress' id='emailInput' value='' placeholder="John@Smith.com" required />
             </div>
 
             <div class='radio'>
               <label>
-                <input class='radio' type='radio' name='size' value='short'>
+                <input class='radio' type='radio' name='size' value='short' />
                 Short
               </label>
             </div>
 
             <div class='radio'>
               <label>
-                <input class='radio' type='radio' name='size' value='tall' checked>
+                <input class='radio' type='radio' name='size' value='tall' checked />
                 Tall
               </label>
             </div>
 
             <div class='radio'>
               <label>
-                <input class='radio' type='radio' name='size' value='grande'>
+                <input class='radio' type='radio' name='size' value='grande' />
                 Grande
               </label>
             </div>
@@ -57,7 +58,7 @@
 
             <div class='form-group'>
               <label for='strengthLevel'>Caffeine Rating</label>
-              <input name='strength' id='strengthLevel' type='range' value='30'>
+              <input name='strength' id='strengthLevel' type='range' value='30' />
             </div>
 
             <button type='submit' class='btn btn-default'>Submit</button>
@@ -74,6 +75,7 @@
       </div>
     </section>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+    <script src='scripts/validation.js' charset='utf-8'></script>
     <script src='scripts/checklist.js' charset='utf-8'></script>
     <script src='scripts/formhandler.js' charset='utf-8'></script>
     <script src='scripts/datastore.js' charset='utf-8'></script>

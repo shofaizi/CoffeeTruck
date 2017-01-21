@@ -32,12 +32,16 @@
   CheckList.prototype.removeRow = function(email) {
     this.$element
       .find('[value="' + email + '"]')
+      // find value that is equal to user's email
       .closest('[data-coffee-order="checkbox"]')
+      // search for ancestor whose data-coffee-order attribute is equal to checkbox
       .remove();
   };
 
   CheckList.prototype.addClickHandler = function(fn) {
     this.$element.on('click', 'input', function(e) {
+      // filtering selector tells event handler to run the callback only if the event was
+      // triggered by an <input> element
       var email = e.target.value;
       this.removeRow(email);
       fn(email);
