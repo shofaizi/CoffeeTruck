@@ -45,7 +45,7 @@
         e.target.setCustomValidity(message);
       }
     });
-  }
+  };
 
   App.FormHandler = FormHandler;
   window.App = App;
