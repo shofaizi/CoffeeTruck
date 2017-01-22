@@ -27,9 +27,13 @@
         console.log(item.name + " is " + item.value);
       });
       console.log(data);
-      fn(data); //callback is invoked and will pass user's data
-      this.reset();
-      this.elements[0].focus();
+      fn(data) //callback is invoked and will pass user's data
+      .then(function () {
+        this.reset();
+        this.elements[0].focus();
+        // use .then to register a callback that resets the form and focuses on the
+        // first element
+      }.bind(this));
     });
   };
 

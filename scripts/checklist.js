@@ -43,8 +43,10 @@
       // filtering selector tells event handler to run the callback only if the event was
       // triggered by an <input> element
       var email = e.target.value;
-      this.removeRow(email);
-      fn(email);
+      fn(email)
+        .then(function () {
+          this.removeRow(email);
+        }.bind(this));
     }.bind(this));
   };
 
