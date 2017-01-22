@@ -3,6 +3,7 @@
   var App = window.App || {}; //local variable
   // If there is already an App property of the window, you assign the local
   // App to it. If not, the label App will refer to a new empty object.
+  var Promise = window.Promise;
 
   function DataStore() {
     this.data = {};
@@ -10,24 +11,29 @@
     // this.date is similar to DataStore.data
   }
 
+  function promiseResolvedWith(value) {
+    var promise = new Promise(function (resolve,reject) {
+      resolve(value);
+    // Promise constructor instance
+    });
+    return promise;
+  };
+
   DataStore.prototype.add = function(key, val) {
-    this.data[key] = val;
-    // create custom DataStore types by adding .prototype.add to DataStore
-    // this will allow unique inputs
-  }
+    return promiseResolvedWith(null);
+  };
 
   DataStore.prototype.get = function(key) {
-    return this.data[key];
-    //return a specific data
+    return promiseResolvedWith(this.data[key]);
   }
 
   DataStore.prototype.getAll = function() {
-    return this.data;
-    // gets all data
+    return promiseResolvedWith(this.data);
   }
 
   DataStore.prototype.remove = function(key) {
     delete this.data[key];
+    return promiseResolvedWith(null);
   }
 
   App.DataStore = DataStore;

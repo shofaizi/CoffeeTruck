@@ -13,7 +13,7 @@
   var CheckList = App.CheckList;
 
   var remoteDS = new RemoteDataStore(SERVER_URL);
-  var myTruck = new Truck('ncc-1701', remoteDS); //creating an instance
+  var myTruck = new Truck('ncc-1701', new DataStore()); //creating an instance
   window.myTruck = myTruck; //export that instance to the global namespace
 
   var checkList = new CheckList(CHECKLIST_SELECTOR);
