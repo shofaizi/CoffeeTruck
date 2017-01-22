@@ -11,12 +11,15 @@
 
   Truck.prototype.createOrder = function(order) {
     console.log('Adding order for ' + order.emailAddress);
-    this.db.add(order.emailAddress, order);
+    return this.db.add(order.emailAddress, order);
+    // returning promises and deffereds lets any object that calls createOrder
+    // and deliverOrder register callbacks that are triggered when asynchronous
+    // work is finished
   }
 
   Truck.prototype.deliverOrder = function(customerId) {
     console.log('Delivering order for ' + customerId);
-    this.db.remove(customerId);
+    return this.db.remove(customerId);
   }
 
   Truck.prototype.printOrders = function() {
