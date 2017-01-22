@@ -21,10 +21,11 @@
   var formHandler = new FormHandler(FORM_SELECTOR);
 
   formHandler.addSubmitHandler(function(data) {
-    myTruck.createOrder.call(myTruck, data);
-    checkList.addRow.call(checkList, data);
+    myTruck.createOrder.call(myTruck, data)
+    .then(function () {
+      checkList.addRow.call(checkList, data);
+    });
   });
-
   formHandler.addInputHandler(Validation.isCompanyEmail);
 
 })(window);
