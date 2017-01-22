@@ -10,6 +10,7 @@
   var CheckList = App.CheckList;
   var myTruck = new Truck('ncc-1701', new DataStore()); //creating an instance
   window.myTruck = myTruck; //export that instance to the global namespace
+
   var checkList = new CheckList(CHECKLIST_SELECTOR);
   checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
   var formHandler = new FormHandler(FORM_SELECTOR);
@@ -20,5 +21,5 @@
   });
 
   formHandler.addInputHandler(Validation.isCompanyEmail);
-  
+
 })(window);
