@@ -21,6 +21,7 @@
 
   DataStore.prototype.add = function(key, val) {
     return promiseResolvedWith(null);
+    // use null as argument since nothing needs to be resolved
   };
 
   DataStore.prototype.get = function(key) {

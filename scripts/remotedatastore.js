@@ -10,6 +10,9 @@
     this.serverUrl = url
   };
 
+// AJAX return deferred objects that also include .then method
+// if object has two arguments (resolved,rejected)
+// if resolved .then method is called with an argument (callback)
   RemoteDataStore.prototype.add = function(key, val) {
     return $.post(this.serverUrl, val, function(serverResponse) {
       // 1 Arg, where to go (URL)
@@ -20,6 +23,7 @@
   };
 
   RemoteDataStore.prototype.getAll = function(cb) {
+    // optional callback, use if statement to check if passed
     return $.get(this.serverUrl, function(serverResponse) {
       if(cb) {
         console.log(serverResponse);

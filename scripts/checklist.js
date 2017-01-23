@@ -47,6 +47,7 @@
         .then(function () {
           this.removeRow(email);
         }.bind(this));
+        // .then method changes the scope of this, use bind to make the owner CheckList
     }.bind(this));
   };
 
